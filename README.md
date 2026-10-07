@@ -20,6 +20,44 @@ A production-grade, full-stack AI-assisted release governance platform. It helps
 
 ---
 
+## 📸 Application Screenshots & UI Walkthrough
+
+### 1. Executive Dashboard & Releases Overview
+> *High-level visibility into release metrics, semver versions, AI readiness status, and recent packages.*
+![Executive Dashboard](screenshots/01-dashboard.png)
+
+---
+
+### 2. Create Release Package & Deterministic Validation
+> *Structured 8-section input form with stable item ID generation (`FEATURE-001`, `QA-001`) and instant pre-fill capability.*
+![Create Release Form](screenshots/02-create-release.png)
+
+---
+
+### 3. AI Readiness Analysis & Unsupported Claim Detection
+> *Critical QA claim verification flagging overpromising statements, user impact classifications, and contextual gaps.*
+![Release Readiness Analysis](screenshots/03-analysis-readiness.png)
+
+---
+
+### 4. Technical & Stakeholder Briefs with Human-in-the-Loop Review
+> *Separate audience-targeted summaries, clickable evidence citations, and human approval/rejection editor.*
+![Briefs and Human Review](screenshots/04-briefs-and-review.png)
+
+---
+
+### 5. Version Comparison & Stale Statement Detection
+> *Side-by-side semver diffs, QA test evolution, and automated identification of outdated historical statements.*
+![Version Comparison](screenshots/05-version-comparison.png)
+
+---
+
+### 6. System & AI Workflow Audit Logs
+> *Complete audit trail of release lifecycle events with sanitized metadata.*
+![System Logs](screenshots/06-system-logs.png)
+
+---
+
 ## 🛠 Tech Stack
 
 - **Framework**: Next.js 16 (App Router), React 19, TypeScript
