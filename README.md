@@ -103,13 +103,13 @@ npm test
 Test Results:
 ```
  ✓ tests/reviewWorkflow.test.ts (4 tests)
- ✓ tests/staleDetection.test.ts (2 tests)
- ✓ tests/comparison.test.ts (3 tests)
+ ✓ tests/staleDetection.test.ts (4 tests)
+ ✓ tests/comparison.test.ts (6 tests)
  ✓ tests/validation.test.ts (4 tests)
  ✓ tests/aiResponse.test.ts (3 tests)
 
  Test Files  5 passed (5)
-      Tests  16 passed (16)
+      Tests  21 passed (21)
 ```
 
 ---
