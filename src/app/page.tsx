@@ -103,7 +103,7 @@ export default async function DashboardPage() {
       {/* Hero Welcome banner */}
       <div className="rounded-2xl bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 p-8 text-white shadow-xl relative overflow-hidden">
         <div className="absolute right-0 top-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-indigo-500/10 blur-3xl" />
-        <div className="relative z-10 max-w-2xl space-y-4">
+        <div className="relative z-10 max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full bg-indigo-500/20 px-3 py-1 text-xs font-medium text-indigo-200 border border-indigo-400/30">
             <ShieldCheck className="h-3.5 w-3.5" />
             Reliable Release Governance Platform
@@ -114,7 +114,7 @@ export default async function DashboardPage() {
           <p className="text-sm text-indigo-100/90 leading-relaxed">
             A hybrid release governance platform utilizing deterministic checks for missing information, semver preservation, evidence citations, AI impact &amp; unsupported claim detection, and mandatory human-in-the-loop sign-off.
           </p>
-          <div className="pt-2 flex flex-wrap gap-3">
+          <div className="pt-2 flex flex-wrap items-center gap-3">
             <Link
               href="/releases/create"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-indigo-900 hover:bg-indigo-50 transition-colors shadow-sm"
@@ -210,7 +210,7 @@ export default async function DashboardPage() {
               <Rocket className="h-6 w-6" />
             </div>
             <h3 className="mt-4 text-base font-semibold text-slate-900 dark:text-white">No releases found</h3>
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-slate-500 max-w-md mx-auto">
               Get started by creating your first structured release package with QA evidence.
             </p>
             <div className="mt-6">

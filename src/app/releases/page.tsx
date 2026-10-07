@@ -2,7 +2,7 @@ import Link from 'next/link';
 import connectDB from '@/lib/db/mongoose';
 import { Release } from '@/lib/db/models/Release';
 import { Analysis } from '@/lib/db/models/Analysis';
-import { Card, CardContent } from '@/components/ui/Card';
+import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { 
   Rocket, 
@@ -97,13 +97,13 @@ export default async function ReleasesPage() {
             Immutable, versioned release artifacts and readiness briefs
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <Link
             href="/compare"
             className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 shadow-xs dark:bg-slate-900 dark:border-slate-700 dark:text-slate-200"
           >
             <GitCompare className="h-4 w-4" />
-            Compare Versions
+            Compare
           </Link>
           <Link
             href="/releases/create"
@@ -122,7 +122,7 @@ export default async function ReleasesPage() {
             <Rocket className="h-6 w-6" />
           </div>
           <h3 className="mt-4 text-base font-semibold text-slate-900 dark:text-white">No releases created yet</h3>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-slate-500 max-w-md mx-auto">
             Create your first release package to start deterministic validation and AI analysis.
           </p>
           <div className="mt-6">

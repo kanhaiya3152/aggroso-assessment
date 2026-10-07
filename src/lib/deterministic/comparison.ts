@@ -76,7 +76,7 @@ export function compareReleases(
 
 /**
  * Stale statement detection — purely deterministic.
- * Identifies statements from versionA that are contradicted by versionB.
+ * Identifies statements from versionA that are contradicted by NEW items in versionB.
  */
 export function detectStaleStatements(
   packageA: ReleasePackage,
@@ -85,14 +85,20 @@ export function detectStaleStatements(
 ): StaleStatement[] {
   const stale: StaleStatement[] = [];
 
-  // Check known limitations for changes
+  // Check known limitations for changes across releases
   for (const limitA of packageA.knownLimitations) {
     for (const limitB of packageB.knownLimitations) {
-      const isSameTopicButChanged =
-        limitA.text !== limitB.text &&
-        limitA.text.toLowerCase().split(' ').some((word) =>
-          word.length > 4 && limitB.text.toLowerCase().includes(word)
-        );
+      // If exact same text, it's not changed
+      if (limitA.text.trim().toLowerCase() === limitB.text.trim().toLowerCase()) {
+        continue;
+      }
+
+      // Check if both limitations refer to the exact same metric/topic (e.g. "maximum export file size")
+      const wordsA = limitA.text.toLowerCase().split(/\s+/).filter((w) => w.length > 4);
+      const commonWords = wordsA.filter((w) => limitB.text.toLowerCase().includes(w));
+
+      // Must share significant overlap (at least 2 words > 4 chars) to be the same topic
+      const isSameTopicButChanged = commonWords.length >= 2;
 
       if (isSameTopicButChanged) {
         stale.push({
@@ -107,31 +113,40 @@ export function detectStaleStatements(
     }
   }
 
-  // Check features: if versionA says something "is not available" but versionB adds it
-  const featureTextsB = packageB.completedFeatures.map((f) => f.text.toLowerCase());
-  for (const item of [...packageA.knownLimitations, ...packageA.changedBehaviour]) {
-    for (const featureB of featureTextsB) {
-      const keywords = item.text
-        .toLowerCase()
-        .split(' ')
-        .filter((w) => w.length > 4);
-      const isReferenced = keywords.some((kw) => featureB.includes(kw));
-      const isNegative =
-        item.text.toLowerCase().includes('not available') ||
-        item.text.toLowerCase().includes('not supported') ||
-        item.text.toLowerCase().includes('unavailable');
+  // Check features: only NEW features introduced in package B can make an older statement stale
+  const existingFeaturesA = new Set(packageA.completedFeatures.map((f) => f.text.toLowerCase().trim()));
+  const newFeaturesB = packageB.completedFeatures.filter(
+    (f) => !existingFeaturesA.has(f.text.toLowerCase().trim())
+  );
 
-      if (isReferenced && isNegative) {
+  for (const item of [...packageA.knownLimitations, ...packageA.changedBehaviour]) {
+    const isNegative =
+      item.text.toLowerCase().includes('not available') ||
+      item.text.toLowerCase().includes('not supported') ||
+      item.text.toLowerCase().includes('unavailable');
+
+    if (!isNegative) continue;
+
+    const keywords = item.text
+      .toLowerCase()
+      .replace(/not available|not supported|unavailable/g, '')
+      .split(/\s+/)
+      .map((w) => w.replace(/[^a-z0-9]/g, ''))
+      .filter((w) => w.length >= 3 && w !== 'the' && w !== 'and' && w !== 'for');
+
+    for (const featureB of newFeaturesB) {
+      const isReferenced = keywords.some((kw) => featureB.text.toLowerCase().includes(kw));
+
+      if (isReferenced) {
         stale.push({
           previousReleaseId: versionA,
           previousVersion: versionA,
           statement: item.text,
           statementId: item.id,
-          reason: `A new feature was added that may make this statement stale: "${packageB.completedFeatures.find((f) => f.text.toLowerCase().includes(keywords[0]))?.text}"`,
-          newEvidenceIds: packageB.completedFeatures
-            .filter((f) => keywords.some((kw) => f.text.toLowerCase().includes(kw)))
-            .map((f) => f.id),
+          reason: `A new feature was added in the new version that may make this statement stale: "${featureB.text}"`,
+          newEvidenceIds: [featureB.id],
         });
+        break;
       }
     }
   }
