@@ -1,4 +1,4 @@
-# Release Communication & Readiness Brief Assistant
+# Aggroso - Release Communication & Readiness Brief Assistant
 
 A production-grade, full-stack AI-assisted release governance platform. It helps engineering and product teams evaluate structured software release packages, deterministically validate completeness, verify claims against QA test evidence, classify changes by user impact, detect outdated/stale statements across semver versions, and generate distinct technical and stakeholder release briefs with mandatory human-in-the-loop review.
 
