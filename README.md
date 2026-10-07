@@ -2,6 +2,7 @@
 
 A production-grade, full-stack AI-assisted release governance platform. It helps engineering and product teams evaluate structured software release packages, deterministically validate completeness, verify claims against QA test evidence, classify changes by user impact, detect outdated/stale statements across semver versions, and generate distinct technical and stakeholder release briefs with mandatory human-in-the-loop review.
 
+### Live Link : https://aggroso-assessment.vercel.app/
 ---
 
 ## 🚀 Key Highlights & Architectural Principles
@@ -23,38 +24,29 @@ A production-grade, full-stack AI-assisted release governance platform. It helps
 ## 📸 Application Screenshots & UI Walkthrough
 
 ### 1. Executive Dashboard & Releases Overview
-> *High-level visibility into release metrics, semver versions, AI readiness status, and recent packages.*
-![Executive Dashboard](screenshots/01-dashboard.png)
+<img width="1604" height="980" alt="image" src="https://github.com/user-attachments/assets/214fba01-6f67-475c-b799-f6a739019139" />
 
 ---
 
 ### 2. Create Release Package & Deterministic Validation
-> *Structured 8-section input form with stable item ID generation (`FEATURE-001`, `QA-001`) and instant pre-fill capability.*
-![Create Release Form](screenshots/02-create-release.png)
+<img width="1600" height="994" alt="Screenshot 2026-10-07 182326" src="https://github.com/user-attachments/assets/826362a2-613e-449c-99ce-9e95a36fa8eb" />
+
 
 ---
 
 ### 3. AI Readiness Analysis & Unsupported Claim Detection
-> *Critical QA claim verification flagging overpromising statements, user impact classifications, and contextual gaps.*
-![Release Readiness Analysis](screenshots/03-analysis-readiness.png)
+<img width="1560" height="890" alt="image" src="https://github.com/user-attachments/assets/487e2a6c-b485-43ce-b748-ca8fa91778db" />
+
 
 ---
 
-### 4. Technical & Stakeholder Briefs with Human-in-the-Loop Review
-> *Separate audience-targeted summaries, clickable evidence citations, and human approval/rejection editor.*
-![Briefs and Human Review](screenshots/04-briefs-and-review.png)
+### 4. Version Comparison & Stale Statement Detection
+<img width="1650" height="985" alt="Screenshot 2026-10-07 182343" src="https://github.com/user-attachments/assets/76596e4b-394b-4aab-890d-7890d38cb3cf" />
 
 ---
 
-### 5. Version Comparison & Stale Statement Detection
-> *Side-by-side semver diffs, QA test evolution, and automated identification of outdated historical statements.*
-![Version Comparison](screenshots/05-version-comparison.png)
-
----
-
-### 6. System & AI Workflow Audit Logs
-> *Complete audit trail of release lifecycle events with sanitized metadata.*
-![System Logs](screenshots/06-system-logs.png)
+### 5. System & AI Workflow Audit Logs
+<img width="1671" height="1003" alt="Screenshot 2026-10-07 182358" src="https://github.com/user-attachments/assets/a6bda9bf-571a-44fd-bfd0-b0a2ba2accf8" />
 
 ---
 
